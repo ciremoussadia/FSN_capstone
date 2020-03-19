@@ -10,9 +10,12 @@ def create_app(test_config=None):
   setup_db(app)
   CORS(app)
 
-  @app.route('/')
-  def index():
-    return '<h1>Casting Sn </h1>'
+  @app.after_request
+  def after_request(response):
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type, Authorization, true')
+    response.headers.add('Access-Control-Allow-Methods', '*')
+    return response
+  
 
   return app
 
