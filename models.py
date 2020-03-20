@@ -32,3 +32,11 @@ class Actor(db.Model):
   name = Column(String, unique=True, nullable=False)
   age = Column(String, nullable=False)
   gender = Column(String, nullable=False)
+
+  def format(self):
+    return {
+      'id': self.id,
+      'name': self.name,
+      'age': self.age,
+      'gender': self.gender
+    }

@@ -8,6 +8,7 @@ from urllib.request import urlopen
 AUTH0_DOMAIN = 'coffee-shop-udacity.auth0.com'
 AUTH0_CLIENT_ID = 'coffee-shop-udacity.auth0.com'
 ALGORITHMS = ['RS256']
+API_AUDIENCE = 'agency'
 
 
 class AuthError(Exception):
@@ -74,10 +75,10 @@ def verify_decode_jwt(token):
             raise AuthError('Expired Signature', 401)
 
         except jwt.JWTClaimsError:
-            raise AuthError('JWT error', 401)
-        except Exception:
-            raise AuthError('Bad Request', 400)
-    raise AuthError('Bad Request', 400)
+            raise AuthError('Incorrect claims', 401)
+        except Exception as e:
+            raise AuthError('Unable to parse authentication token.', 400)
+    raise AuthError('unable to find appropriate key.', 400)
 
 
 def requires_auth(permission=''):
