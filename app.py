@@ -5,7 +5,6 @@ from flask_cors import CORS
 from models import setup_db, Actor, Movie
 from auth import requires_auth, AuthError
 
-
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
@@ -19,6 +18,24 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Methods', '*')
         return response
 
+    def check_actor_params(body):
+        if not body['name']:
+            abort(422, {'message': 'No name in payload'})
+
+        if not body['age']:
+            abort(422, {'message': 'No age in payload'})
+
+        if not body['gender']:
+            abort(422, {'message': 'No gender in payload'})
+
+    def check_movie_params(body):
+        if not body['title']:
+            abort(422, {'message': 'No title in payload'})
+
+        if not body['release']:
+            abort(422, {'message': 'No release date in payload'})
+
+
     @app.route('/actors')
     @requires_auth('read:actors')
     def read_actors(payload):
@@ -31,17 +48,75 @@ def create_app(test_config=None):
     @app.route('/actors', methods=['POST'])
     @requires_auth('create:actors')
     def create_actor(payload):
-        return jsonify({}), 200
+        body = request.get_json()
+        
+        try:
+            actor = Actor(body)
+        except KeyError as e:
+            abort(422, {'message': e})
 
-    @app.route('/actors/<actor_id>', methods=['PATCH'])
+        actor.insert()
+
+        return jsonify({
+            'success': True,
+            'created': actor.id
+        }), 201
+
+    @app.route('/actors/<int:actor_id>', methods=['PATCH'])
     @requires_auth('update:actors')
     def update_actor(payload, actor_id):
-        return jsonify({}), 200
+        actor = Actor.query.get_or_404(actor_id)
+        body = request.get_json()
+        actor.update(body)
 
-    @app.route('/actors/<actor_id>', methods=['DELETE'])
+        print(actor)
+        return jsonify({
+            'success': True,
+            'updated': actor.id
+        }), 200
+
+    @app.route('/actors/<int:actor_id>', methods=['DELETE'])
     @requires_auth('delete:actors')
     def delete_actor(payload, actor_id):
+        actor = Actor.query.get_or_404(actor_id)
+        actor.delete()
+        return jsonify({
+            'success': True,
+            'deleted': actor_id
+        }), 200
+
+    @app.route('/movies')
+    @requires_auth('read:movies')
+    def read_movies(payload):
+        movies = Movie.query.all()
+        return jsonify({
+            'success': True,
+            'movies': [movie.format() for movie in movies]
+        }), 200
+
+    @app.route('/movies', methods=['POST'])
+    @requires_auth('create:movies')
+    def create_movie(payload):
         return jsonify({}), 200
+
+    @app.route('/movies/<movie_id>', methods=['PATCH'])
+    @requires_auth('update:movies')
+    def update_movie(payload, movie_id):
+        movie = Movie.query.get_or_404(movie_id)
+        body = request.get_json()
+        check_movie_params(body)
+        movie.update(body)
+        return jsonify({
+            'success': True,
+            'updated': movie.id
+        }), 200
+
+    @app.route('/movies/<movie_id>', methods=['DELETE'])
+    @requires_auth('delete:movies')
+    def delete_movie(payload, movie_id):
+        return jsonify({
+            'success': True
+        }), 200
 
     @app.errorhandler(AuthError)
     def auth_error(AuthError):
@@ -49,6 +124,20 @@ def create_app(test_config=None):
             'error': 401,
             'message': 'Authentication Error'
         }), 401
+
+    @app.errorhandler(404)
+    def not_found(error):
+        return jsonify({
+            'error': 404,
+            'message': 'Not Found'
+        }), 404
+
+    @app.errorhandler(422)
+    def not_found(error):
+        return jsonify({
+            'error': 422,
+            'message': 'Not Found'
+        }), 422
 
     return app
 
