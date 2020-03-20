@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "7a997720-6d36-4362-9f88-d6bbbef06ae1",
+		"name": "Movie Agency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Actor",
+			"item": [
+				{
+					"name": "Create Artist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_uri}}/artists",
+							"host": [
+								"{{base_uri}}"
+							],
+							"path": [
+								"artists"
+							]
+						},
+						"description": "Create an artist with valid data"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c1f06f54-4919-4ad5-aea9-81df26b6a517",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3bbab8f5-4a25-4cbd-9d37-753832a7b854",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "3e0140b3-7cfd-4f35-a738-8d1ae7cd18cb",
+			"key": "base_uri",
+			"value": "localhost:5000/",
+			"type": "string"
+		},
+		{
+			"id": "7a6459fa-23a4-40c2-99b9-85e068591099",
+			"key": "assistant_token",
+			"value": "Casting Assistant Token",
+			"type": "string"
+		},
+		{
+			"id": "24a6395c-67a3-4922-b8b1-f4984d8f6c7e",
+			"key": "director_token",
+			"value": "Director Token",
+			"type": "string"
+		},
+		{
+			"id": "7b88fcef-2212-4cc8-9f92-2d15b25e86be",
+			"key": "producer_token",
+			"value": "Executive Producer Token",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
