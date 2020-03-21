@@ -1327,37 +1327,37 @@
 	],
 	"variable": [
 		{
-			"id": "e4fc5ada-51fe-4910-9d2b-251b4232046c",
+			"id": "a888f6d5-e8f1-4676-ba1a-2f3a595f8b3b",
 			"key": "base_uri",
 			"value": "https://casting-sn.herokuapp.com/",
 			"type": "string"
 		},
 		{
-			"id": "9b17cfbb-89de-49d9-b038-ea7bbd681568",
+			"id": "1bd7e1b2-4a08-4b36-952c-f916ad6bfe4d",
 			"key": "assistant_token",
-			"value": "Casting Assistant Token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5ETkRRVFEyUkRjMk9FWXpPVUZDTlVRME5EZEZOemt4TjBKQ00wUTBPRGhCTkVaRlFVSXpSUSJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZS1zaG9wLXVkYWNpdHkuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlNzRhOWQ1NjVjOWM2MGM1ZDFiYWUyZiIsImF1ZCI6ImFnZW5jeSIsImlhdCI6MTU4NDgwNDQ5NywiZXhwIjoxNTg0ODkwODk3LCJhenAiOiJIeGFmUjdqZTU1dldjRW11cU5HdnVCeFYxUWYzZGcxRSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyJdfQ.CZ4-1adYnj2aJZBEL8uUDGlDtwT3v1vSsOkCHEriMiPpFG4p1JzvAo1EKONn0e-JQ-9f5adlua33WesmGAXs7Qnv9biu-OxMyG6EXR9zkCNHlu_ZWH4MBl247rC899IA37KAdbGe5hKPrNZL4LGGWghGoFHms4nANqQdbm7CmhvfDQe-Hopi63Pj3smY2SoSgnFLuc-5V_W-ci0t5xlYgOQA5duxk9cTaRYzFQ-wpBx9p-Kbz2Ji59wPGM4qP7pjrAHp36NuB9ytk_Y5UpkMMuQSdhW4_wmok-AB5XOZ8ak2CSHL1JdKScXbqRSh8np7z_T8CnEbBUIfK3oe7DFfSg",
 			"type": "string"
 		},
 		{
-			"id": "a8f2fca0-733d-4afe-8e1f-0ca2def6d6ce",
+			"id": "aab7acf1-7e9f-48ce-9ef1-f96fa06441ae",
 			"key": "director_token",
-			"value": "Director Token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5ETkRRVFEyUkRjMk9FWXpPVUZDTlVRME5EZEZOemt4TjBKQ00wUTBPRGhCTkVaRlFVSXpSUSJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZS1zaG9wLXVkYWNpdHkuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlNzRhOWZhZGUxYjliMGM2NjNiNzVjYyIsImF1ZCI6ImFnZW5jeSIsImlhdCI6MTU4NDgwNDU3NiwiZXhwIjoxNTg0ODkwOTc2LCJhenAiOiJIeGFmUjdqZTU1dldjRW11cU5HdnVCeFYxUWYzZGcxRSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiY3JlYXRlOmFjdG9ycyIsImRlbGV0ZTphY3RvcnMiLCJyZWFkOmFjdG9ycyIsInJlYWQ6bW92aWVzIiwidXBkYXRlOmFjdG9ycyIsInVwZGF0ZTptb3ZpZXMiXX0.nK0iD2ygA6BSbuHNxENDVkcd0CfTX8mOLVBMxEitsr_Q5rVkjsjZwK2MmnelpDV0dTtwOaEiRbWhumNgilyaaP8DrG80sieWWbpkD61LpEtgrxIcEzqPoqOQufaLZ7_x4dp8NAYL-TRwl_VvgTC5N0yZZxmEDlwhgVoVhHLRT8GVSD_mVPqfXc1OUPXw3CK5IRCan0SEjmjTYopDlhw6Dkgar9scFNKIyWWLZChg4ROdgwmxW1I3jZG7cBmNpqiFSvMNr_b4KqzPGf4ZCyQfuxKjyLuxT9VqemfJzRIScUGPboUxY-qiNuUCwgHX9P-YjQpBptNGEag6AQwEDHN7JA",
 			"type": "string"
 		},
 		{
-			"id": "57161962-7356-426f-bc04-9d3342150fb6",
+			"id": "74c26cca-5bf2-4156-96e7-70a1a11427d3",
 			"key": "producer_token",
-			"value": "Executive Producer Token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik5ETkRRVFEyUkRjMk9FWXpPVUZDTlVRME5EZEZOemt4TjBKQ00wUTBPRGhCTkVaRlFVSXpSUSJ9.eyJpc3MiOiJodHRwczovL2NvZmZlZS1zaG9wLXVkYWNpdHkuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlNzRhYTE3NjVjOWM2MGM1ZDFiYWVjYyIsImF1ZCI6ImFnZW5jeSIsImlhdCI6MTU4NDgwNDYyOCwiZXhwIjoxNTg0ODkxMDI4LCJhenAiOiJIeGFmUjdqZTU1dldjRW11cU5HdnVCeFYxUWYzZGcxRSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiY3JlYXRlOmFjdG9ycyIsImNyZWF0ZTptb3ZpZXMiLCJkZWxldGU6YWN0b3JzIiwiZGVsZXRlOm1vdmllcyIsInJlYWQ6YWN0b3JzIiwicmVhZDptb3ZpZXMiLCJ1cGRhdGU6YWN0b3JzIiwidXBkYXRlOm1vdmllcyJdfQ.BaY2u-zdaZLGDXe05klACCZG03qlnHn60S2Ph0MNGUDlCm28_AoL_IBaYKTSGOyOhJJNhf0BzNMvX4-B16GtnaSI5rpicZFkGeUwl5rQGgbCZHY86UH31x_VutdTY9Mnh57jOYy8Wk86eT-99kwbQreLm3Y-k6qLBCuc_kBRLm0APdqj13z-ZSrjQ1BdTF_86M7srt081qS3eqHDpd2RSvfzNvgoEVQIVYMB_ryXB0r9MqdI2Sb1XnnZH-yBm8MmcsymoKEPa2Z-jqGxQsZeK9UgYeD5knPvTVFYt0YU3CO7TciDv3F3CUNYfIAXDTwsGA_fSQLJjJ1uZnOh99kpEQ",
 			"type": "string"
 		},
 		{
-			"id": "592befbb-450d-4d93-96e4-123a0d83610b",
+			"id": "d7463bfe-d4c3-435b-b8cb-2f08268a53d3",
 			"key": "actor_created_id",
 			"value": "1",
 			"type": "string"
 		},
 		{
-			"id": "6ce44acc-12ec-4f43-ae6a-2db0643f1a9e",
+			"id": "03a2e1ea-9281-4211-9575-de5a17b9ebe5",
 			"key": "movie_created_id",
 			"value": "1",
 			"type": "string"
