@@ -29,10 +29,22 @@ class Movie(db.Model):
     actors = db.relationship('Actor', secondary=actors_movies,
                              lazy='subquery', backref=db.backref('movies'))
 
+    def __init__(self, attribs={}):
+        self.title = attribs['title']
+        self.release = attribs['release']
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
+
     def update(self, attribs):
         self.title = attribs['title']
         self.release = attribs['release']
         db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
         db.session.commit()
 
     def format(self):
@@ -69,7 +81,6 @@ class Actor(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
 
     def format(self):
         return {

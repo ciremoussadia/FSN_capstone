@@ -368,8 +368,8 @@
 									"script": {
 										"id": "a230b0a7-43c7-497d-b348-e6c31cf2784c",
 										"exec": [
-											"pm.test(\"Status code is 200\", function () {",
-											"    pm.response.to.have.status(200);",
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
 											"});",
 											"",
 											"var jsonData = pm.response.json();",
@@ -618,8 +618,8 @@
 									"script": {
 										"id": "dc060eee-0857-4cd3-ad73-495a18abf820",
 										"exec": [
-											"pm.test(\"Status code is 401\", function () {",
-											"    pm.response.to.have.status(401);",
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
 											"});",
 											""
 										],
@@ -630,14 +630,23 @@
 							"request": {
 								"method": "PATCH",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Equalizer 2\",\n    \"release\": \"2002/06/14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{base_uri}}/movies/1",
+									"raw": "{{base_uri}}/movies/{{movie_created_id}}",
 									"host": [
 										"{{base_uri}}"
 									],
 									"path": [
 										"movies",
-										"1"
+										"{{movie_created_id}}"
 									]
 								}
 							},
@@ -664,13 +673,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_uri}}/movies/1",
+									"raw": "{{base_uri}}/movies/{{movie_created_id}}",
 									"host": [
 										"{{base_uri}}"
 									],
 									"path": [
 										"movies",
-										"1"
+										"{{movie_created_id}}"
 									]
 								}
 							},
@@ -714,6 +723,584 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Executive Producer",
+			"item": [
+				{
+					"name": "Actors",
+					"item": [
+						{
+							"name": "Create actor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a230b0a7-43c7-497d-b348-e6c31cf2784c",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set('actor_created_id', jsonData.created)",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Brad Pitt\",\n    \"age\": 45,\n    \"gender\": \"Male\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/actors",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"actors"
+									]
+								},
+								"description": "Create an artist with valid data"
+							},
+							"response": []
+						},
+						{
+							"name": "List of actors",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a0b856b8-a5c9-42fc-9235-7df35e58e9b5",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/actors",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"actors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update actor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4f1de28e-823d-4961-9f19-64b8084d0db1",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Bradd Pitt\",\n    \"age\": 42,\n    \"gender\": \"Male\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/actors/{{actor_created_id}}",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"actors",
+										"{{actor_created_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete actor",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c78cfd32-7751-4aaa-b788-ea27c9d7a27e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/actors/{{actor_created_id}}",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"actors",
+										"{{actor_created_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "13b25294-6931-4c2f-a1b7-c6830a8263d3",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "23db552b-2226-43a8-a73e-84f2b0f3b0ca",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Movies",
+					"item": [
+						{
+							"name": "Create a movie",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5ea7d5c2-a7ac-47c4-8916-e3d574d4f418",
+										"exec": [
+											"pm.test(\"Status code is 201\", function () {",
+											"    pm.response.to.have.status(201);",
+											"});",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set('movie_created_id', jsonData.created)",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"title\": \"Star Wars\",\n\t\"release\": \"2004/01/01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/movies",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"movies"
+									]
+								},
+								"description": "Creates a movie. This is out of the assistant permissions"
+							},
+							"response": []
+						},
+						{
+							"name": "List of movies",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "01e4254c-983e-4324-9b49-3717122c4d8b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"value contains movies array\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData.movies).to.be.an('array')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/movies",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"movies"
+									]
+								},
+								"description": "Get's all the movies and details"
+							},
+							"response": []
+						},
+						{
+							"name": "Update movie",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dc060eee-0857-4cd3-ad73-495a18abf820",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Star Wars 2\",\n    \"release\": \"2008/06/14\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/movies/{{movie_created_id}}",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"movies",
+										"{{movie_created_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete movie",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "661954f0-af8c-4ce0-8950-9395f02eceed",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/movies/{{movie_created_id}}",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"movies",
+										"{{movie_created_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "60cca15a-dc4c-4104-a380-0a4339836cff",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdd4ba6e-6919-429f-933b-669a6abdd852",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sad Path",
+					"item": [
+						{
+							"name": "Create Actor with bad params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf7f8c78-9bd6-4429-94d4-7db17c6e9c1a",
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {",
+											"    pm.response.to.have.status(422);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Brad Pitt\",\n    \"age\": 34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/actors",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"actors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Movies with bad params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bf7f8c78-9bd6-4429-94d4-7db17c6e9c1a",
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {",
+											"    pm.response.to.have.status(422);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Brad Pitt\",\n    \"age\": 34\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/movies",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update actor with bad params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a297d6c9-afde-499a-ba32-7ee3330ad1f7",
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {",
+											"    pm.response.to.have.status(422);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Brad Pitt\",\n    \"gender\": \"Male\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/actors/1",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"actors",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update movies with bad params",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a297d6c9-afde-499a-ba32-7ee3330ad1f7",
+										"exec": [
+											"pm.test(\"Status code is 422\", function () {",
+											"    pm.response.to.have.status(422);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Star Wars\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/movies/1",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"movies",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{producer_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9ee1ea14-3613-4f22-a34f-1410361c612c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e14e5656-c6df-4e21-8606-fe0bb2ec28be",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -740,33 +1327,39 @@
 	],
 	"variable": [
 		{
-			"id": "7465ffad-94f9-4a88-81fc-9d7e404f6d27",
+			"id": "e4fc5ada-51fe-4910-9d2b-251b4232046c",
 			"key": "base_uri",
 			"value": "https://casting-sn.herokuapp.com/",
 			"type": "string"
 		},
 		{
-			"id": "42ba53a7-33c0-40db-8eb1-f6de7bdd64df",
+			"id": "9b17cfbb-89de-49d9-b038-ea7bbd681568",
 			"key": "assistant_token",
 			"value": "Casting Assistant Token",
 			"type": "string"
 		},
 		{
-			"id": "903e46fb-bd35-49a5-af6d-895cfc5862df",
+			"id": "a8f2fca0-733d-4afe-8e1f-0ca2def6d6ce",
 			"key": "director_token",
 			"value": "Director Token",
 			"type": "string"
 		},
 		{
-			"id": "8ae0ffd5-ec14-4013-a71e-0363f6e5bb1b",
+			"id": "57161962-7356-426f-bc04-9d3342150fb6",
 			"key": "producer_token",
 			"value": "Executive Producer Token",
 			"type": "string"
 		},
 		{
-			"id": "161cd48a-4fe8-4060-9b9e-56befd9e0a6f",
+			"id": "592befbb-450d-4d93-96e4-123a0d83610b",
 			"key": "actor_created_id",
-			"value": "Actor id ",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"id": "6ce44acc-12ec-4f43-ae6a-2db0643f1a9e",
+			"key": "movie_created_id",
+			"value": "1",
 			"type": "string"
 		}
 	],
